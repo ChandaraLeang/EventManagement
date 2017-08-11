@@ -1,0 +1,5 @@
+mum\ea\controller\FacilityController.class
+mum\ea\repository\FacilityRepository.class
+mum\ea\service\FacilityService.class
+mum\ea\EventManagementApp.class
+mum\ea\domain\Facility.class
