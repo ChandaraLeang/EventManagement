@@ -2,15 +2,11 @@ package mum.ea.domain;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -47,6 +43,9 @@ public class User {
 	@OneToMany
 	private Set<Role> roles;
 
+	@OneToMany
+	private Set<EventGroup> groups;
+	
 	public int getId() {
 		return id;
 	}
