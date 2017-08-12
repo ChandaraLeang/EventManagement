@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -33,6 +34,9 @@ public class Event {
 	
 	@ManyToOne
 	private Facility facility;
+	
+	@OneToOne
+	private User eventOrganizer;
 	
 	@NotNull
 	@Column
@@ -119,5 +123,13 @@ public class Event {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+
+	public User getEventOrganizer() {
+		return eventOrganizer;
+	}
+
+	public void setEventOrganizer(User eventOrganizer) {
+		this.eventOrganizer = eventOrganizer;
 	}
 }
