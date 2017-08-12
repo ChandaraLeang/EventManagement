@@ -16,9 +16,9 @@ import mum.ea.repository.FacilityRepository;
 @Service
 @Transactional
 public class FacilityService {
-	
-	@PersistenceContext	
-	private EntityManager entityManager;	
+
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@Autowired
 	private FacilityRepository facilityRepository;
@@ -31,5 +31,21 @@ public class FacilityService {
 
 	public Facility getFacility(int facilityId) {
 		return facilityRepository.findOne(facilityId);
+	}
+
+	public void addFacility(Facility facility) {
+		facilityRepository.save(facility);
+	}
+
+	public void updateFacility(Facility facility) {
+		facilityRepository.save(facility);
+	}
+
+	public void deleteFacility(Facility facility) {
+		facilityRepository.delete(facility);
+	}
+	
+	public void deleteFacility(int facilityId) {
+		facilityRepository.delete(facilityId);
 	}
 }
