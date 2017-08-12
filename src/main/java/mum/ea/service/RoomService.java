@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import mum.ea.domain.Building;
 import mum.ea.domain.Room;
+import mum.ea.repository.BuildingRepository;
 import mum.ea.repository.RoomRepository;
 
 @Service
@@ -22,6 +24,8 @@ public class RoomService {
 
 	@Autowired
 	private RoomRepository roomRepository;
+	@Autowired
+	private BuildingRepository buildingRepository;
 
 	public List<Room> getAllRooms() {
 		List<Room> rooms = new ArrayList<>();
@@ -44,12 +48,12 @@ public class RoomService {
 	public void deleteRoom(Room room) {
 		roomRepository.delete(room);
 	}
-	
+
 	public void deleteRoom(int roomId) {
 		roomRepository.delete(roomId);
 	}
 
-	public List<Room> findRoomByBuilding(int buildingId) {
-		return roomRepository.findRoomByBuilding(buildingId);
+	public List<Room> findByBuilding(int buildingId) {
+		return roomRepository.findByBuilding(buildingRepository.findOne(buildingId));
 	}
 }
