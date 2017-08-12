@@ -1,33 +1,35 @@
 package mum.ea.controller;
 
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import mum.ea.domain.Facility;
 import mum.ea.service.FacilityService;
 
-@RestController
+@Controller
 public class FacilityController {
 	
 	@Autowired
 	private FacilityService facilityService;
 	
-	@RequestMapping("/")
-	public String index() {
-		return "Greetings from Spring Boot!";
+	@GetMapping("/")
+	public String index(Model model) {
+		model.addAttribute("fullPageMessage", "Greetings from Spring Boot!");
+		return "fullPageMessage";
 	}
 	
-	@RequestMapping("/facilities")
+	@GetMapping("/facilities")
 	public List<Facility> getFacilities() {
 		return facilityService.getAllFacilities();
 	}
 	
-	@RequestMapping("/facilities/{id}")
+	@GetMapping("/facilities/{id}")
 	public Facility getFacility(@PathVariable int id) {
 		return facilityService.getFacility(id);
 	}

@@ -16,6 +16,7 @@ public class Building {
 	@NotNull
 	private String code;
 	private String name;
+	private String description;
 	
 	@Enumerated(EnumType.STRING)
 	private BuildingType type;
@@ -23,12 +24,13 @@ public class Building {
 	public Building() {
 	}
 
-	public Building(int id, String code, String name, BuildingType type) {
+	public Building(int id, String code, String name, BuildingType type, String desc) {
 		super();
 		this.id = id;
 		this.code = code;
 		this.name = name;
 		this.type = type;
+		this.setDescription(desc);
 	}
 
 	public int getId() {
@@ -61,6 +63,14 @@ public class Building {
 
 	public void setType(BuildingType type) {
 		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
