@@ -27,8 +27,8 @@ public class RoomController {
 		return roomService.getRoom(id);
 	}
 	
-	@RequestMapping("buildings/{buildingId}/rooms")
+	@RequestMapping("/buildings/{buildingId}/rooms")
 	public  List<Room> getBuildingRooms(@PathVariable int buildingId) {
-		return roomService.findRoomByBuilding(buildingId);
+		return roomService.findByBuilding(buildingId);
 	}
 }
