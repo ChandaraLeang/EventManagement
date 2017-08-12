@@ -7,16 +7,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
-public class Group {
+public class EventGroup {
 	@Id
 	@GeneratedValue
 	private int id;
@@ -30,9 +29,19 @@ public class Group {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdOn;
 	
-	@Autowired
 	@OneToOne
+	@JoinColumn(name="Category_id")
 	private Category category;
+	
+	@ManyToOne
+	private User createdBy;
+	
+	public User getCreatedBy() {
+		return createdBy;
+	}
+	public void setCreatedBy(User createdBy) {
+		this.createdBy = createdBy;
+	}
 	public int getId() {
 		return id;
 	}
@@ -63,7 +72,4 @@ public class Group {
 	public void setCategory(Category category) {
 		this.category = category;
 	} 
-	
-	
-
 }

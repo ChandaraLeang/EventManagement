@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: MUM Events Management
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Chandara Leang
+Built-By: Nayan
 Implementation-Vendor-Id: mum.ea
-Build-Jdk: 1.8.0_131
+Build-Jdk: 1.8.0_144
 Implementation-URL: http://projects.spring.io/spring-boot/EventManagem
  ent/
 Created-By: Maven Integration for Eclipse

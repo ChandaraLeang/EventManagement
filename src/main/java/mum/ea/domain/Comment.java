@@ -5,8 +5,6 @@ import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 @Entity
 public class Comment {
 	@Id
@@ -21,10 +19,19 @@ public class Comment {
 	@Column
 	private int rating;
 	
-	@Autowired
-
 	@ManyToOne
 	private Event event;
+   
+    @ManyToOne
+    private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public int getId() {
 		return id;
@@ -65,7 +72,4 @@ public class Comment {
 	public void setEvent(Event event) {
 		this.event = event;
 	}
-	
-	
-
 }
