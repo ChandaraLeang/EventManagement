@@ -17,9 +17,6 @@ import mum.ea.repository.BuildingRepository;
 @Transactional
 public class BuildingService {
 
-	@PersistenceContext
-	private EntityManager entityManager;
-
 	@Autowired
 	private BuildingRepository buildingRepository;
 
