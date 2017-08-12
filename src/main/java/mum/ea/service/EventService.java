@@ -32,4 +32,20 @@ public class EventService {
 	public Event getEvent(int eventId) {
 		return eventRepository.findOne(eventId);
 	}
+	
+	public void addEvent(Event event) {
+		eventRepository.save(event);
+	}
+
+	public void updateEvent(Event event) {
+		eventRepository.save(event);
+	}
+
+	public void deleteEvent(Event event) {
+		eventRepository.delete(event);
+	}
+	
+	public void deleteEvent(int eventId) {
+		eventRepository.delete(eventId);
+	}
 }
