@@ -27,6 +27,12 @@ public class LoginController {
 		
 		return "admin/administration";
 	}
+	
+	@RequestMapping(value="/home", method = RequestMethod.GET)
+	public String getHome(){
+		
+		return "home";
+	}
 }
 
 /*
