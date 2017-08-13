@@ -17,7 +17,7 @@
 			 
 			<c:forEach items="${userList}" var="users">
 				<tr>
-					<td width="150px">${users.ame}</td>
+					<td width="150px">${users.name}</td>
 					<td width="150px">${users.lastName}</td>
 					<td width="40px">${users.email}</td>
 					<td align="right">

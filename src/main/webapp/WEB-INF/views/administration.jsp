@@ -3,15 +3,14 @@
 	padding: 25 25; width:400px; border-radius: 25px;
 	border:2px solid #73AD21; background: url(paper.gif);">
 
-	<div class="details">
-		<h1>User Registration</h1>
-	</div>
+	<div><h1>User Registration</h1></div>
 	<div class="alert-danger" >
 		<form:errors path="user.*" class="alert-danger"></form:errors>
 	</div>
+	
 	<spring:url value="/registration/" var="saveRegistration" />
-	<form:form modelAttribute="registrationForm" action="${saveRegistration}" method="post">
-
+	
+	<form modelAttribute="registrationForm" action="${saveRegistration}" method="post">
 		<f:hidden path="id" />
 		<table>
 			<tr>
@@ -54,10 +53,10 @@
 				<td><button type="submit" class="btn btn-success" style = "width:120px">Save</button></td>
 			</tr>
 		</table>
-	
+		</div>
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
-	</form:form>
+	</form>
 </div>
 
 <%@ include file="/resources/common/footer.jspf"%>

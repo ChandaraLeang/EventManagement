@@ -1,30 +1,38 @@
 package mum.ea.controller;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import mum.ea.config.GetCurrentUser;
 import mum.ea.domain.EventGroup;
 import mum.ea.domain.Role;
 import mum.ea.domain.User;
 import mum.ea.service.EventGroupService;
 import mum.ea.service.RoleService;
 import mum.ea.service.UserService;
+import mum.ea.service.UserServiceImpl;
 
 
 @Controller
 public class LoginController {
 
 	@Autowired
-	private UserService userService;
+	private UserServiceImpl userService;
 	
 	@Autowired
 	private EventGroupService eventGroupService;
@@ -32,59 +40,19 @@ public class LoginController {
 	@Autowired
 	private RoleService roleService;
 	
-	@RequestMapping(value="/registration", method = RequestMethod.GET)
-	public ModelAndView registration(){
-		ModelAndView modelAndView = new ModelAndView();
-		User user = new User();
-		modelAndView.addObject("RegistrationForm", user);
-
-		modelAndView.setViewName("registration");
-		return modelAndView;
-	}
+	@Autowired
+	GetCurrentUser getCurrentUser;
 	
-	@RequestMapping(value="/registration", method = RequestMethod.POST)
-	public ModelAndView saveUserRegistration(@Valid User user, BindingResult bindingResult) {
-		ModelAndView modelAndView = new ModelAndView();
-		User userExists = userService.findUserByEmail(user.getEmail());
-		if (userExists != null) {
-			bindingResult
-					.rejectValue("email", "error.user",
-							"There is already a user registered with the email provided");
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request,
+			HttpServletResponse response) {
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
+		if (auth != null) {
+			new SecurityContextLogoutHandler().logout(request, response, auth);
+			getCurrentUser.logoutUser();
 		}
-		if (bindingResult.hasErrors()) {
-			System.out.println("OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO");
-			modelAndView.addObject("RegistrationForm", user);
-			modelAndView.setViewName("registration");
-		} else {
-			
-			Set<Role> roles = new HashSet();
-			Set<EventGroup> groups = new HashSet();
-			Role role = new Role();
-			EventGroup group = new EventGroup();
-			role = roleService.findByRole("ADMIN");
-			int indx = 1;
-			group = eventGroupService.getGroup(indx);
-			roles.add(role);
-			System.out.println(role);
-			groups.add(group);
-			System.out.println(group);
-			user.setRoles(roles);
-			user.setGroups(groups);
-			System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP");
-			System.out.println(user);
-			userService.saveUser(user);
-			modelAndView.addObject("successMessage", "User has been registered successfully");
-			modelAndView.addObject("RegistrationForm", new User());
-			modelAndView.setViewName("registration");
-			
-		}
-		return modelAndView;
-	}
-	
-	@RequestMapping(value="/admin", method = RequestMethod.GET)
-	public String getAdmin(){
-		
-		return "admin/administration";
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value="/getHome", method = RequestMethod.GET)
