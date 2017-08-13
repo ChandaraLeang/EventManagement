@@ -7,5 +7,5 @@ import mum.ea.domain.User;
 
 @Repository("userRepository")
 public interface UserRepository extends JpaRepository<User, Long> {
-	 User findByEmail(String email);
+	 public User findByEmail(String email);
 }

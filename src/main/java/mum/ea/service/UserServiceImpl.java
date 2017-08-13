@@ -12,7 +12,7 @@ import mum.ea.domain.User;
 import mum.ea.repository.RoleRepository;
 import mum.ea.repository.UserRepository;
 
-@Service("userService")
+@Service
 public class UserServiceImpl implements UserService{
 
 	@Autowired

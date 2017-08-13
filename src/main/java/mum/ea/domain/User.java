@@ -2,12 +2,13 @@ package mum.ea.domain;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.Email;
@@ -40,10 +41,10 @@ public class User {
 	private String lastName;
 	@Column(name = "active")
 	private int active;
-	@OneToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<Role> roles;
 
-	@OneToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	private Set<EventGroup> groups;
 	
 	public int getId() {
@@ -100,6 +101,20 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Set<EventGroup> getGroups() {
+		return groups;
+	}
+
+	public void setGroups(Set<EventGroup> groups) {
+		this.groups = groups;
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", email=" + email + ", password=" + password + ", name=" + name + ", lastName="
+				+ lastName + ", active=" + active + ", roles=" + roles + "]";
 	}
 
 }
