@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -12,23 +11,21 @@ public class Category {
 
 	@Id @GeneratedValue
 	private int id;
+	
 	@NotNull
 	@Column
 	private String name;
+	
 	@Column
 	private String description;
-	
-	@ManyToOne
-	private Event event;
 	
 	public Category(){
 		
 	}
 	
-	public Category(String name, String description, Event event){
+	public Category(String name, String description){
 		this.name = name;
 		this.description = description;
-		this.event = event;
 	}
 	
 	public int getId() {
