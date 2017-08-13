@@ -1,6 +1,8 @@
 package mum.ea.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -23,6 +25,11 @@ public class Facility {
 	@OneToOne
 	@JoinColumn(name = "roomId", nullable = true)
 	private Room room;
+
+	@Enumerated(EnumType.STRING)
+	private FacilityType type;
+
+	private String description;
 
 	private boolean isAvailable;
 
@@ -85,6 +92,22 @@ public class Facility {
 
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
+	}
+
+	public FacilityType getType() {
+		return type;
+	}
+
+	public void setType(FacilityType type) {
+		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

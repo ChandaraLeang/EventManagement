@@ -8,15 +8,15 @@
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
-<title>Buildings</title>
+<title>Rooms</title>
 </head>
 <body>
 	<div class="jumbotron">
 		<div class="container">
-			<h1 style="display: inline;">Building List</h1>
-				<span class="pull-right"> <a href="addBuilding"
-					class="btn btn-info"> Add Building</a>
-				</span>
+			<h1 style="display: inline;">Room List</h1>
+			<span class="pull-right"> <a href="addRoom"
+				class="btn btn-info"> Add Room</a>
+			</span>
 		</div>
 	</div>
 	<div class="container">
@@ -27,20 +27,21 @@
 					<table class="table table-responsive">
 						<thead>
 							<tr>
-								<th>Building code</th>
+								<th>Number</th>
 								<th>Name</th>
-								<th>Type</th>
+								<th>Building</th>
 								<th>Description</th>
+								<th>Max Number of Occupants</th>
 							</tr>
 						</thead>
-						<c:forEach var="building" items="${buildings}">
+						<c:forEach var="room" items="${rooms}">
 							<tr>
-								<td>${building.code}</td>
-								<td>${building.name}</td>
-								<td>${building.type}</td>
-								<td>${building.description}</td>
-								<td><a href="buildings/${building.id}"
-									class="btn btn-primary">Edit</a></td>
+								<td>${room.number}</td>
+								<td>${room.name}</td>
+								<td>${room.building.name}</td>
+								<td>${room.description}</td>
+								<td>${room.maxNoOfOccupants}</td>
+								<td><a href="rooms/${room.id}" class="btn btn-primary">Edit</a></td>
 							</tr>
 						</c:forEach>
 					</table>

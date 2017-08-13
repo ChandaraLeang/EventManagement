@@ -19,12 +19,12 @@ public class Building {
 	private String description;
 	
 	@Enumerated(EnumType.STRING)
-	private BuildingType type;
+	private FacilityType type;
 
 	public Building() {
 	}
 
-	public Building(int id, String code, String name, BuildingType type, String desc) {
+	public Building(int id, String code, String name, FacilityType type, String desc) {
 		super();
 		this.id = id;
 		this.code = code;
@@ -57,11 +57,11 @@ public class Building {
 		this.name = name;
 	}
 
-	public BuildingType getType() {
+	public FacilityType getType() {
 		return type;
 	}
 
-	public void setType(BuildingType type) {
+	public void setType(FacilityType type) {
 		this.type = type;
 	}
 

@@ -7,13 +7,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import mum.ea.domain.Building;
-import mum.ea.domain.BuildingType;
+import mum.ea.domain.FacilityType;
 import mum.ea.service.BuildingService;
 
 @Controller
@@ -30,7 +31,7 @@ public class BuildingController {
 
 	@GetMapping("/buildings/{id}")
 	public String getBuilding(@PathVariable int id, Model m) {
-		List<BuildingType> types = new ArrayList<BuildingType>(Arrays.asList(BuildingType.values()));
+		List<FacilityType> types = new ArrayList<FacilityType>(Arrays.asList(FacilityType.values()));
 
 		m.addAttribute("buildingTypes", types);
 		m.addAttribute("building", buildingService.getBuilding(id));
@@ -54,10 +55,19 @@ public class BuildingController {
 		buildingService.updateBuilding(b);
 		return "redirect:/buildings";
 	}
-	@DeleteMapping("/buildings/{id}")
-	public String deleteBuilding(@PathVariable int id) {
-		buildingService.deleteBuilding(id);
+	
+	@PostMapping("/buildings/delete/{id}")
+	public String deleteBuilding(Building b) {
+		buildingService.deleteBuilding(b.getId());
 		return "redirect:/buildings";
 	}
+	
+	 @ExceptionHandler(value = NoSuchResourceException.class)
+	    public ModelAndView handle(Exception e) {
+	        ModelAndView mv = new ModelAndView();
+	        mv.getModel().put("e", e);
+	        mv.setViewName("fullPageMessage");
+	        return mv;
+	    }
 
 }
