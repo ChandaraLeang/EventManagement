@@ -10,14 +10,17 @@ import javax.validation.constraints.NotNull;
 public class Room {
 	@Id
 	@GeneratedValue
-	private int id;
-	@NotNull
+	private int id;	
 	private String number;
+	
+	@NotNull
 	private String name;
 	private int maxNoOfOccupants;
+	
 	@NotNull
 	@ManyToOne
 	private Building building;
+	private String description;
 	
 	public Room() {}
 
@@ -68,6 +71,14 @@ public class Room {
 
 	public void setBuilding(Building building) {
 		this.building = building;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }

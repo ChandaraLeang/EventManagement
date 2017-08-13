@@ -9,12 +9,12 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
 
-<title>Building Detail</title>
+<title>Room Detail</title>
 </head>
 <body>
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Building Detail</h1>
+			<h1>Room Detail</h1>
 		</div>
 	</div>
 	<div class="container">
@@ -25,11 +25,11 @@
 						<h3 class="panel-title">Please Enter Details</h3>
 					</div>
 					<div class="panel-body">
-						<form:form action="../buildings/${building.id}" method="post"
-							modelAttribute="building">
+						<form:form action="../rooms/${room.id}" method="post"
+							modelAttribute="room">
 
 							<div class="form-group">
-								<label><span>Code:</span> <form:input path="code"
+								<label><span>Number:</span> <form:input path="number"
 										cssClass="form-control" /></label>
 							</div>
 							<div class="form-group">
@@ -37,29 +37,32 @@
 										cssClass="form-control" /></label>
 							</div>
 							<div class="form-group">
-								<label><span>Type:</span> <form:select path="type"
+								<label><span>Building:</span> <form:select path="building"
 										cssClass="form-control">
-										<form:option value="${type}"></form:option>
-										<form:options items="${buildingTypes}" />
+												<form:options items="${buildings}" itemLabel="name" itemValue="id"  />
 									</form:select> </label>
+							</div>
+							<div class="form-group">
+								<label><span>No. of Occupants:</span> <form:input
+										path="maxNoOfOccupants" cssClass="form-control" /></label>
 							</div>
 							<div class="form-group">
 								<label><span>Description:</span> <form:input
 										path="description" cssClass="form-control" /></label>
 							</div>
-							<c:if test="${building.id!=0}">
+							<c:if test="${room.id!=0}">
 								<input type="submit" value="Update" class="btn btn-primary" />
 							</c:if>
-							<c:if test="${building.id==0}">
+							<c:if test="${room.id==0}">
 								<input type="submit" value="Save" class="btn btn-primary" />
 							</c:if>
-							<a class="btn btn-primary" href="/buildings">Back to List</a>
-							<c:if test="${building.id!=0}">
-								<button form="bldDelete" type="submit" class="btn btn-warning">Delete</button>
+							<a class="btn btn-primary" href="/rooms">Back to List</a>
+							<c:if test="${room.id!=0}">
+								<button form="roomDelete" type="submit" class="btn btn-warning">Delete</button>
 							</c:if>
 						</form:form>
 
-						<form:form id="bldDelete" action="/buildings/delete/${building.id}" method="post" modelAttribute="building"></form:form>
+						<form:form id="roomDelete" action="/rooms/delete/${room.id}" method="post" modelAttribute="room"></form:form>
 
 					</div>
 				</div>
