@@ -96,18 +96,26 @@ public class LoginController {
 }
 
 /*
+
 SELECT * FROM eadb.user;
 SELECT * FROM eadb.role;
 SELECT * FROM eadb.user_roles;
+select * from eadb.user_groups;
+SELECT * FROM eadb.event_group;
+SELECT * FROM eadb.category;
+SELECT * FROM eadb.event;
+SELECT * FROM eadb.facility;
 
 insert into eadb.role values(1,'ADMIN');
-insert into eadb.user values(1,1,'uremail@gmail.com','lastname','name','$2a$10$H8J7/O.8KkjX2rVbmhaWFern6oSf5KwQFZuh.XE2yORSfrNVyCMnS');
+insert into eadb.user values(1,1,'celeto.ogrimen@gmail.com','lastname','name','$2a$10$H8J7/O.8KkjX2rVbmhaWFern6oSf5KwQFZuh.XE2yORSfrNVyCMnS');
 insert into eadb.user_roles values(1,1);
 
-use eadb;
-select u.email, r.role from user u inner join user_roles ur 
-	on(u.user_id=ur.user_user_id) inner join role r 
-    on(ur.roles_role_id=r.role_id) where u.email='uremail@gmail.com';
-    select u.email, r.role from user u inner join user_roles ur on(u.user_id=ur.user_user_id) inner join role r 
-    on(ur.roles_role_id=r.role_id) where u.email='uremail@gmail.com';
+insert into eadb.building values(1,'building','building','new','Other');
+insert into eadb.room values(1,10,'room1','sw',1);
+insert into eadb.facility values(1,'www', 1,10,'facility1',1);
+insert into eadb.event values (1,'2017-01-01 11:11:11.0','name',1,'2017-01-01 11:11:11.0', 1,1,1);
+insert into eadb.category values(1, 'category','category', '1');
+insert into eadb.event_group values(1,'2017-01-01 11:11:11.0', 'sample group', 'sample group', '1', 1);
+
+
 */
