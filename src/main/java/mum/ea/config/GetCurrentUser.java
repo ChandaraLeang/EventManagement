@@ -14,7 +14,7 @@ public class GetCurrentUser {
 	public GetCurrentUser(){}
 	
 	public String getLoggedInUserName() {
-		Object principal = currentUser(); //SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Object principal = getUser(); //SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		if (principal instanceof UserDetails){
 			this.currentUser = principal.toString();
@@ -23,7 +23,7 @@ public class GetCurrentUser {
 		return currentUser;
 	}
 	
-	public Object currentUser() {
+	public Object getUser() {
 		return SecurityContextHolder.getContext()
 				.getAuthentication().getPrincipal();
 	}

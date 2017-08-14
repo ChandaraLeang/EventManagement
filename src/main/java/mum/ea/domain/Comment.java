@@ -12,7 +12,6 @@ public class Comment {
 	private int id;
 	@Column
 	private String description;
-	
 	@NotNull
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
@@ -73,4 +72,12 @@ public class Comment {
 	public void setEvent(Event event) {
 		this.event = event;
 	}
+
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", description=" + description + ", commentDate=" + commentDate + ", rating="
+				+ rating + ", event=" + event + ", user=" + user + "]";
+	}
+	
+	
 }
