@@ -46,7 +46,6 @@ public class AdminController {
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
 		ModelAndView modelAndView = new ModelAndView();
-		//List<UserType> userType = new ArrayList<UserType>(Arrays.asList(UserType.values()));
 		User user = new User();
 		user.setStatus(2);
 		modelAndView.addObject("registrationForm", user);
@@ -89,27 +88,21 @@ public class AdminController {
 			int indx = 1;
 			group = eventGroupService.getGroup(indx);
 			roles.add(role);
-			System.out.println(role);
 			groups.add(group);
-			System.out.println(group);
 			user.setRoles(roles);
 			user.setGroups(groups);
-			System.out.println(user);
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
 			modelAndView.addObject("registrationForm", new User());
 			user.setStatus(2);
 			modelAndView.addObject("userType",userType);
 			modelAndView.setViewName("login");
-			
 		}
 		return modelAndView;
 	}
 	
-	//public String listEmail(ModelMap model, @RequestParam int id, @RequestParam int update_id)
 	@RequestMapping(value="/admin", method = RequestMethod.GET)
 	public String getAdmin(){
-		
 		return "admin/administration";
 	}
 	
@@ -118,21 +111,15 @@ public class AdminController {
 		ModelAndView model = new ModelAndView("admin/userapproval");
 		
 		List<User> userList = userService.findAll();
-		
 		model.addObject("userList",userList);
-		
 		return model;
 	}
 	
 	@RequestMapping(value="/admin/notapprove", method=RequestMethod.GET)
 	public String delete(ModelMap model, @RequestParam int id) {
-		System.out.println("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
 		
 		userService.deleteUser((long)id);
-		System.out.println("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
-		
 		List<User> userList = userService.findAll();
-		
 		model.addAttribute("userList",userList);
 		
 		return "admin/userapproval";

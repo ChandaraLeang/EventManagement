@@ -25,9 +25,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-
 		auth.userDetailsService(userDetailsService).passwordEncoder(passwordencoder());
-		
 	}
 	
 	@Override
@@ -35,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 			.antMatchers("/","/login").permitAll()
-			.antMatchers("/admin, /admin/**").access("hasRole('ADMIN')").anyRequest().permitAll()
+			.antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest().permitAll()
 			.and()
 				.formLogin().loginPage("/login")
 				.usernameParameter("username").passwordParameter("password")

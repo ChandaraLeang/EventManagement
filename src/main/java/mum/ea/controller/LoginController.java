@@ -31,11 +31,6 @@ public class LoginController {
 		}
 		return "redirect:/";
 	}
-	
-	@RequestMapping(value="/getHome", method = RequestMethod.GET)
-	public String getHome(){
-		
-		return "fullPageMessage";
-	}
+
 	
 }
