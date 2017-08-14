@@ -34,16 +34,21 @@
 			<tr>
 				<td><label>Password :</label></td>
 				<td style="padding:10px;">
-					<f:input path="password" type="password" class="style-4"/>
+					<f:input path="password" type="password" class="style-4" 
+						placeholder="Password"/>
        			</td>		
 			</tr>	
 			<tr>
 				<td><label>Verify Password</label> </td>
+				<td style="width: 200px;padding:10px">
+					<input type="password" class="style-4" name="verifypassword"
+						placeholder="Password" />
+				</td>
+			</tr>
+			<tr>
+				<td>Type of User :</td>
 				<td>
-					<div>
-						<input type="password" class="style-4" name="verifypassword"
-							placeholder="Password" />
-					</div>
+					<f:radiobuttons path="status" items="${userType}" itemValue="value" itemLabel="key"/>
 				</td>
 			</tr>
 			<tr>		

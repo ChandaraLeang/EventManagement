@@ -10,7 +10,6 @@
 			<tr>
 				<th>First Name</th>
 				<th>Last Name</th>
-				<th>Gender</th>
 				<th>Email(s)</th>
 				<th align="right"></th>
 			</tr>
@@ -23,9 +22,10 @@
 					<td align="right">
 						<spring:url value="/admin/userapprove?id=${users.id}" var="userApprove" />
 						<a type="button" class="btn btn-primary" href="${userApprove}">Approve</a>
+						<spring:url value="/admin/notapprove?id=${users.id}" var="notApproved" />
+						<a type="button" class="btn btn-large btn-primary btn-warning" href="${notApproved}">Not Approve</a>
 							
-							
-							<div id="myModal_${users.id}" class="modal fade">
+							<%-- <div id="myModal_${users.id}" class="modal fade">
 							    <div class="modal-dialog">
 							        <div class="modal-content">
 							            <div class="modal-header">
@@ -47,6 +47,7 @@
 							
 							
 						<a href="#myModal_${users.id}" role="button" class="btn btn-large btn-primary btn-warning" data-toggle="modal">Not approve</a>
+ --%>
 
 					</td>
 				</tr>

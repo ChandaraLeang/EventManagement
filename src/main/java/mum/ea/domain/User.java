@@ -23,7 +23,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")
-	private int id;
+	private long id;
 	@Column(name = "email")
 	@Email(message = "*Please provide a valid Email")
 	@NotEmpty(message = "*Please provide an email")
@@ -39,19 +39,21 @@ public class User {
 	@Column(name = "last_name")
 	@NotEmpty(message = "*Please provide your last name")
 	private String lastName;
+	@Column(name="status")
+	private int status;
 	@Column(name = "active")
 	private int active;
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Set<Role> roles;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
 	private Set<EventGroup> groups;
 	
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -109,6 +111,14 @@ public class User {
 
 	public void setGroups(Set<EventGroup> groups) {
 		this.groups = groups;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	@Override

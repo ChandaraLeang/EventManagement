@@ -17,7 +17,7 @@
 					<td>
 						<div>
 							<input type="text" class="style-4" name="username"
-								placeholder="User Name" />
+								placeholder="User Name" style="width:220px" />
 						</div>
 					</td>
 				</tr>
@@ -27,7 +27,7 @@
 					<td>
 						<div>
 							<input type="password" class="style-4" name="password"
-								placeholder="Password" />
+								placeholder="Password" style="width:220px"/>
 						</div>
 					</td>
 				</tr>
