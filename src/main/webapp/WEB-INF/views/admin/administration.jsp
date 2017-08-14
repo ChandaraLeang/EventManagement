@@ -5,6 +5,7 @@
 	border:2px solid #73AD21; background: url(paper.gif);">
 
 	<h1>User Administration</h1>
+	
 </div>
 
 <%@ include file="/resources/common/footer.jspf"%>
