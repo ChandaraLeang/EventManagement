@@ -12,6 +12,7 @@ public class Comment {
 	private int id;
 	@Column
 	private String description;
+	
 	@NotNull
 	@Column
 	@Temporal(TemporalType.TIMESTAMP)
