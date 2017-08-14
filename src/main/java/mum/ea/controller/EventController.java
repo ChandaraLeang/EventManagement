@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import mum.ea.domain.Event;
 import mum.ea.service.CategoryService;
 import mum.ea.service.EventService;
+import mum.ea.service.FacilityService;
 
 @Controller
 public class EventController {
@@ -22,6 +23,9 @@ public class EventController {
 	@Autowired
 	private CategoryService categoryService;
 	
+	@Autowired
+	private FacilityService facilityService;
+	
 	@GetMapping("/events")
 	public String getEvents(Model m) {
 		m.addAttribute("events", eventService.getAllEvents());
@@ -31,6 +35,7 @@ public class EventController {
 	@GetMapping("/events/{id}")
 	public String getEvent(@PathVariable int id, Model m) {
 		m.addAttribute("categories", categoryService.getAllCategories());
+		m.addAttribute("facilities", facilityService.getAllFacilities());
 		m.addAttribute("event", eventService.getEvent(id));
 		return "eventDetail";
 	}
@@ -38,6 +43,7 @@ public class EventController {
 	@GetMapping("/addEvent")
 	public String addEventView(Model m) {
 		m.addAttribute("categories", categoryService.getAllCategories());
+		m.addAttribute("facilities", facilityService.getAllFacilities());
 		m.addAttribute("event" , new Event());
 		return "eventDetail";
 	}

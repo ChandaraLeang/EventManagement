@@ -43,6 +43,14 @@
 							</div>
 							
 							<div class="form-group">
+								<label><span>Facility:</span> 
+								<form:select path="facility" cssClass="form-control">
+										<form:option value="-1" label="--Please Select"/>
+      									<form:options items="${facilities}" itemValue="id" itemLabel="name"/>
+									</form:select> </label>
+							</div>
+							
+							<div class="form-group">
 								<label><span>Number of People:</span> <form:input path="noOfPeople"
 										cssClass="form-control" /></label>
 							</div>

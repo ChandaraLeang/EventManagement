@@ -30,6 +30,7 @@
 								<th>Name</th>
 								<th>Start Date</th>
 								<th>End Date</th>
+								<th>Facility</th>
 								<th>Number of People</th>
 								<th>Category</th>
 							</tr>
@@ -39,6 +40,7 @@
 								<td>${event.name}</td>
 								<td>${event.startDate}</td>
 								<td>${event.endDate}</td>
+								<td>${event.facility.name}</td>
 								<td>${event.noOfPeople}</td>
 								<td>${event.category.name}</td>
 								<td><a href="events/${event.id}"
