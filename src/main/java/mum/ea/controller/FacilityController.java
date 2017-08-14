@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import mum.ea.domain.Facility;
 import mum.ea.domain.FacilityType;
+import mum.ea.service.EventService;
 import mum.ea.service.FacilityService;
 
 @Controller
@@ -21,10 +22,15 @@ public class FacilityController {
 	@Autowired
 	private FacilityService facilityService;
 	
+	@Autowired
+	private EventService eventService;
+	
 	@GetMapping("/")
 	public String index(Model model) {
-		model.addAttribute("fullPageMessage", "Greetings from Spring Boot!");
-		return "fullPageMessage";
+		/*model.addAttribute("fullPageMessage", "Greetings from Spring Boot!");
+		return "fullPageMessage";*/
+		model.addAttribute("events", eventService.getAllEvents());
+		return "upcomingEventList";
 	}
 	
 	@GetMapping("/facilities")
