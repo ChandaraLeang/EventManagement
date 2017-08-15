@@ -6,6 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<link rel="stylesheet" href="https://secure.meetupstatic.com/s/fonts/402715706936963211631/graphik.css" type="text/css" />
+<link rel="stylesheet" href="https://secure.meetupstatic.com/s/style/75103493079032032679636/foundation/main.css" type="text/css" />
+
+
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <link href="resources/css/style.css" rel="stylesheet" type="text/css" />
 
