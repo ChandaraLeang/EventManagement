@@ -5,9 +5,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
+<style>
+	.error{
+		color: #ff0000;
+		font-style: italic;
+	}
+</style>
 
 <title>Category Detail</title>
 </head>
@@ -25,12 +30,13 @@
 						<h3 class="panel-title">Please Enter Details</h3>
 					</div>
 					<div class="panel-body">
-						<form:form action="../categories/${category.id}" method="post"
-							modelAttribute="category">
+						<form:form action="../categories/${category.id}" method="post" modelAttribute="category">
 
 							<div class="form-group">
-								<label><span>Name:</span> <form:input path="name"
-										cssClass="form-control" /></label>
+								<label><span>Name:</span> 
+									<form:input path="name" cssClass="form-control" />
+									<form:errors path="name" cssClass="error" />
+								</label>
 							</div>
 							<div class="form-group">
 								<label><span>Description:</span> <form:input

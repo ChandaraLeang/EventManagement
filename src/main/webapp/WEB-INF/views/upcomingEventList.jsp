@@ -19,7 +19,7 @@
 	<jsp:include page="header.jsp" />
 	<div class="viewport">
 		
-		<h1 class="text-primary">Upcoming Event List</h1>
+		<h1 class="text-primary">Upcoming Events</h1>
 		
 		<div class="bounds bounds--categories">
 			<ul class="gridList gridList--has2 atMedium_gridList--has3 atLarge_gridList--has4" style="text-align:left;">

@@ -1,8 +1,11 @@
 package mum.ea.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,15 +52,23 @@ public class EventController {
 	}
 
 	@PostMapping("/events")
-	public String addEvent(Event e) {
+	public String addEvent(@Valid Event e, BindingResult result) {
+		if (result.hasErrors()) {
+            return "addEvent";
+        } else {
 		eventService.addEvent(e);
 		return "redirect:/events";
+        }
 	}
 
 	@PostMapping("/events/{id}")
-	public String updateEvent(Event e) {
+	public String updateEvent(@Valid Event e, BindingResult result) {
+		if (result.hasErrors()) {
+            return "eventDetail";
+        } else {
 		eventService.updateEvent(e);
 		return "redirect:/events";
+        }
 	}
 	
 	@PostMapping("/events/delete/{id}")

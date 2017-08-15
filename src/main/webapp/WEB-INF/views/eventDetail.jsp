@@ -10,6 +10,13 @@
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="resources/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
 
+<style>
+	.error{
+		color: #ff0000;
+		font-style: italic;
+	}
+</style>
+
 <title>Event Detail</title>
 </head>
 <body>
@@ -30,17 +37,28 @@
 							modelAttribute="event">
 
 							<div class="form-group">
-								<label><span>Name:</span> <form:input path="name"
-										cssClass="form-control" /></label>
+								<label><span>Name:</span> 
+									<form:input path="name" cssClass="form-control" />
+									<form:errors path="name" cssClass="error" />
+								</label>
 							</div>
+													
+							<div class="form-group">
+								<label><span>Start Date:</span></label>
+                				<div class='input-group date' id="startDate">
+                    				<form:input path="startDate" cssClass="form-control" />
+                    				<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                				</div>
+            				</div>
+							
 							
 							<div class="form-group">
-								<label><span>Start Date:</span> <form:input path="startDate" id="startDate" cssClass="form-control" /></label>
-							</div>
-							
-							<div class="form-group">
-								<label><span>End Date:</span> <form:input path="endDate" id="endDate" cssClass="form-control" /></label>
-							</div>
+								<label><span>End Date:</span></label>
+                				<div class='input-group date' id="endDate">
+                    				<form:input path="endDate" cssClass="form-control" />
+                    				<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                				</div>
+            				</div>
 							
 							<div class="form-group">
 								<label><span>Facility:</span> 
@@ -51,8 +69,10 @@
 							</div>
 							
 							<div class="form-group">
-								<label><span>Number of People:</span> <form:input path="noOfPeople"
-										cssClass="form-control" /></label>
+								<label><span>Number of People:</span> 
+									<form:input path="noOfPeople" cssClass="form-control" />
+									<form:errors path="noOfPeople" cssClass="error" />
+								</label>
 							</div>
 							
 							<div class="form-group">
@@ -65,7 +85,7 @@
 							
 							<div class="form-group">
 								<label><span>Status:</span>
-								<form:checkbox path="status" cssClass="form-control" checked="checked" />
+								<form:checkbox path="status" checked="checked" />
 								</label>
 							</div>
 							

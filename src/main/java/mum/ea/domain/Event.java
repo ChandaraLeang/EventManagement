@@ -12,6 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -20,7 +21,7 @@ public class Event {
 	@Id @GeneratedValue
 	private int id;
 	
-	@NotNull
+	@NotBlank
 	@Column
 	private String name;
 	
