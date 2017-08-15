@@ -49,6 +49,7 @@
                     				<form:input path="startDate" cssClass="form-control" />
                     				<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 				</div>
+                				<form:errors path="startDate" cssClass="error" />
             				</div>
 							
 							
@@ -58,6 +59,7 @@
                     				<form:input path="endDate" cssClass="form-control" />
                     				<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
                 				</div>
+                				<form:errors path="endDate" cssClass="error" />
             				</div>
 							
 							<div class="form-group">
