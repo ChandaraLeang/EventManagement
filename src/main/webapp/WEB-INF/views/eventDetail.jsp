@@ -63,6 +63,12 @@
 									</form:select> </label>
 							</div>
 							
+							<div class="form-group">
+								<label><span>Status:</span>
+								<form:checkbox path="status" cssClass="form-control" checked="checked" />
+								</label>
+							</div>
+							
 							<c:if test="${event.id!=0}">
 								<input type="submit" value="Update" class="btn btn-primary" />
 							</c:if>

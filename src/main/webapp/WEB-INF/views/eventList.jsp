@@ -33,6 +33,7 @@
 								<th>Facility</th>
 								<th>Number of People</th>
 								<th>Category</th>
+								<th>Status</th>
 							</tr>
 						</thead>
 						<c:forEach var="event" items="${events}">
@@ -43,6 +44,7 @@
 								<td>${event.facility.name}</td>
 								<td>${event.noOfPeople}</td>
 								<td>${event.category.name}</td>
+								<td>${event.status}</td>
 								<td><a href="events/${event.id}"
 									class="btn btn_primary">edit</a></td>
 							</tr>

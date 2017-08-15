@@ -6,27 +6,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <link href="resources/css/style.css" rel="stylesheet" type="text/css" />
+
 <title>Upcoming Events</title>
 </head>
 <body>
 	<jsp:include page="header.jsp" />
 	<div class="viewport">
-		<div class="fullPageMessage">
-			<h1>Upcoming Event List</h1>
-			<div>
+		
+		<h1 class="text-primary">Upcoming Event List</h1>
+		
+		<div class="bounds bounds--categories">
+			<ul class="gridList gridList--has2 atMedium_gridList--has3 atLarge_gridList--has4" style="text-align:left;">
 				<c:forEach var="event" items="${events}">
-					<a href="upcomingEventDetail/${event.id}">
-						<span>Title: ${event.name}</span><br>
-						<span>Start Date: ${event.startDate}</span><br>
-						<span>End Date: ${event.endDate}</span><br>
-						<span>Facility: ${event.facility.name}</span><br>
-						<span>No of People: ${event.noOfPeople}</span><br>
-						<span>Category: ${event.category.name}</span>
-					</a>
-					<br><br>
+					<c:if test="${event.status==true}">
+						<li class="gridList-item" style="padding-right:15px; padding-left:15px;">
+							<a href="upcomingEventDetail/${event.id}" class="button button--activity">
+								<div>
+          							<h4 class="text-danger">${event.name}</h4>
+          							<h6 class="text-success">Date: ${event.startDate}</h6>
+        						</div>
+        					</a>
+						</li>
+					</c:if>
 				</c:forEach>
-			</div>
+			</ul>
 		</div>
 	</div>
 </body>
