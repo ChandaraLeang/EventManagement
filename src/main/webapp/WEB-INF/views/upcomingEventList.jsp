@@ -26,7 +26,7 @@
 				<c:forEach var="event" items="${events}">
 					<c:if test="${event.status==true}">
 						<li class="gridList-item" style="padding-right:15px; padding-left:15px;">
-							<a href="upcomingEventDetail/${event.id}" class="button button--activity">
+							<a href="eventDetail/${event.id}" class="button button--activity">
 								<div>
           							<h4 class="text-danger">${event.name}</h4>
           							<h6 class="text-success">Date: ${event.startDate}</h6>
