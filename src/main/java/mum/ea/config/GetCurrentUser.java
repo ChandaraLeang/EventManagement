@@ -1,13 +1,24 @@
 package mum.ea.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import mum.ea.domain.User;
+import mum.ea.repository.UserRepository;
 
 @Service
 public class GetCurrentUser {
 
 	private String currentUser = null;
+	
+	@Autowired
+	UserRepository usrRepo;
+	
+	public User loggedUser() {
+		return usrRepo.findByEmail(getLoggedInUserName());
+	}
 	
 	//private GetCurrentUser getCurrentUser;
 	
