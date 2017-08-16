@@ -35,6 +35,11 @@
 					<div class="panel-body">
 						<form:form action="../events/${event.id}" method="post"
 							modelAttribute="event">
+							<c:if test="${not empty errorMsg}">
+								<div class="error alert-${css} alert-dismissible" role="alert">
+									<strong>${errorMsg}</strong>
+								</div>
+							</c:if>
 
 							<div class="form-group">
 								<label><span>Name:</span> 
