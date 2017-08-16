@@ -33,8 +33,8 @@ import mum.ea.service.UserServiceImpl;
 @Controller
 public class CommentController {
 	
-	//@Autowired
-	//GetCurrentUser getCurrentUser;
+	@Autowired
+	GetCurrentUser getCurrentUser;
 	
 	//private User user = (User)getCurrentUser.getUser();
 	@Autowired
@@ -61,13 +61,44 @@ public class CommentController {
 		return "commentDetail";
 	}
 	
+	
+	
 	@GetMapping("/addComment")
 	public String addCommentView(Model m) {
 		m.addAttribute("comment" , new Comment());
 		return "commentDetail";
 	}
 
-	@PostMapping("/comments")
+	@PostMapping("/saveEventComment/{id}")
+	public String saveEventComment(@PathVariable int id, Comment c, Event event) {
+		
+		//Event e = eventService.getEvent(1);
+		User user = userService.findUserByEmail(getCurrentUser.getLoggedInUserName());
+		c.setUser(user);
+		c.setEvent(event);
+		c.setCommentDate(new Date());
+		System.out.println("CCCCCCCCCCCCCCc");
+		System.out.println(c);
+		System.out.println("CCCCCCCCCCCCCc");
+		
+		commentService.addComment(c);
+		return "redirect:/eventDetail/"+event.getId();
+	}
+	
+	@GetMapping("/addComment/{id}")
+	public String addNewComment(@PathVariable int id, Model m) {
+		Event event = eventService.getEvent(id);
+		User user = userService.findUserByEmail(getCurrentUser.getLoggedInUserName());
+		Comment comment = new Comment();
+		comment.setEvent(event);
+		comment.setUser(user);
+		m.addAttribute("comment", comment);
+		m.addAttribute("event", event);
+		//m.addAttribute("event", eventService.getEvent(id));
+		return "commentDetail";
+	}
+	
+	/*@PostMapping("/comments")
 	public String addComment(Comment c) {
 		System.err.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"+c.getDescription());
 		System.err.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"+c.getRating());
@@ -77,14 +108,14 @@ public class CommentController {
 		User user = userService.findUserByEmail("engg.nayan@yahoo.com");
 		System.out.println("UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU");
 		System.out.println(user);
-		/*DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-		Date date = new Date();*/
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
 		c.setCommentDate(new Date());
 		c.setUser(user);
 		c.setEvent(event);
 		commentService.addComment(c);
 		return "redirect:/comments";
-	}
+	}*/
 	
 	/**@Autowired
 	private CommentService commentService;

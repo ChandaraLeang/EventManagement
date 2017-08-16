@@ -1,5 +1,6 @@
 package mum.ea.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class EventGroup {
+public class EventGroup implements Serializable{
 	@Id
 	@GeneratedValue
 	private int id;
@@ -31,7 +32,7 @@ public class EventGroup {
 	private Date createdOn;
 	
 	@OneToMany
-	@JoinColumn(name="group_id")
+	
 	private List<Category> categoryList=new ArrayList<Category>();
 	@ManyToOne
 	private User createdBy;

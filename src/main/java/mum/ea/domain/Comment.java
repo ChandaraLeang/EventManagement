@@ -1,12 +1,17 @@
 package mum.ea.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Comment {
+public class Comment implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
 	private int id;

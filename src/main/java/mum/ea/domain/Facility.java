@@ -1,5 +1,8 @@
 package mum.ea.domain;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,23 +11,33 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * @author Kisi1
  *
  */
 @Entity
-public class Facility {
+public class Facility implements Serializable{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue	
 	private int id;
+	
+	@NotBlank
+	@Column(unique=true)
 	private String code;
 	private String name;
 	private int maxPeople;
 
 	@OneToOne
-	@JoinColumn(name = "roomId", nullable = true)
-	private Room room;
+	@JoinColumn(name = "buildingId", nullable = true)
+	private Building building;
 
 	@Enumerated(EnumType.STRING)
 	private FacilityType type;
@@ -36,13 +49,13 @@ public class Facility {
 	public Facility() {
 	}
 
-	public Facility(int id, String code, String name, int maxPeople, Room room, boolean isAvailable) {
+	public Facility(int id, String code, String name, int maxPeople, Building building, boolean isAvailable) {
 		super();
 		this.id = id;
 		this.code = code;
 		this.name = name;
 		this.maxPeople = maxPeople;
-		this.room = room;
+		this.building = building;
 		this.isAvailable = isAvailable;
 	}
 
@@ -78,12 +91,12 @@ public class Facility {
 		this.maxPeople = maxPeople;
 	}
 
-	public Room getRoom() {
-		return room;
+	public Building getBuilding() {
+		return building;
 	}
 
-	public void setRoom(Room room) {
-		this.room = room;
+	public void setBuilding(Building building) {
+		this.building = building;
 	}
 
 	public boolean isAvailable() {

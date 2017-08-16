@@ -14,15 +14,10 @@ public class GetCurrentUser {
 	public GetCurrentUser(){}
 	
 	public String getLoggedInUserName() {
-		String temp=null;
 		Object principal = getUser(); //SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
 		if (principal instanceof UserDetails){
-			temp = principal.toString();
-			
-			String[] data = temp.split(";");
-			String[] user = data[0].split("Username: ");
-			currentUser = user[1].trim();
+			this.currentUser = principal.toString();
 		}
 
 		return currentUser;

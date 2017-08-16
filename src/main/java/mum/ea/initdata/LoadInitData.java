@@ -40,7 +40,7 @@ public class LoadInitData {
 		usr.setActive(1);
 		usr.setEmail("youremail@gmail.com");
 		usr.setPassword("password");
-		usr.setRoles(roles);
+		usr.setRole(role);
 		
 		usrService.saveUser(usr);
 

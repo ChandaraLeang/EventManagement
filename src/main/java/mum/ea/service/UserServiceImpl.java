@@ -43,18 +43,16 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void saveUser(User user) {
+		
+		//user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
-        Role userRole = roleRepository.findByRole("ADMIN");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-		userRepository.save(user);
+        userRepository.save(user);
 	}
 
-/*	@Override
-	public List<User> findAll() {
-		return userRepository.findAll();
+	public void enableUser(User user) {
+		userRepository.save(user);
 	}
-	*/
 	 
 	 @Override
 	 public List<User> findAll() {
@@ -69,20 +67,15 @@ public class UserServiceImpl implements UserService{
 
 	
 	@Override
-	public void deleteUser(long id) {
-		User user = userRepository.findOne(id);
+	public void deleteUser(int id) {
+		User user = userRepository.findById(id);
 		userRepository.delete(user);
-		
-		/*JdbcTemplate template = new JdbcTemplate(dataSource);
-		Object[] params = { id };
-		long[] types = {Types.BIGINT};
-		delete from eadb.user_roles where eadb.user_roles.user_user_id =3;
-		delete from eadb.user_groups where eadb.user_groups.user_user_id =3;
-		String deleteSql = "DELETE FROM eadb.user_roles where eadb.user_roles.user_user_id = ?";
-		int rows = template.update(deleteSql, params, types);
-		deleteSql = "DELETE FROM eadb.user_groups where eadb.user_groups.user_user_id = ?";
-		rows = template.update(deleteSql, params, types);
-		userRepository.delete(id);*/
+	}
+
+	@Override
+	public User findUserById(int id) {
+		User user = userRepository.findById(id);
+		return user;
 	}
 
 }
