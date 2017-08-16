@@ -1,3 +1,5 @@
+<%@ include file="/resources/common/header.jspf"%>
+<%@ include file="/resources/common/navigation.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -5,16 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-
 <title>Facilities</title>
 </head>
 <body>
 	<div class="jumbotron">
 		<div class="container">
 			<h1 style="display: inline;">Facility List</h1>
-			<span class="pull-right"> <a href="addFacility"
+			<span class="pull-right"> <a href="/admin/addFacility"
 				class="btn btn-info"> Add Facility</a>
 			</span>
 		</div>
@@ -29,6 +28,7 @@
 							<tr>
 								<th>Facility code</th>
 								<th>Name</th>
+								<th>Building</th>
 								<th>Type</th>
 								<th>Description</th>
 								<th>Max Number of Occupants</th>
@@ -39,10 +39,11 @@
 							<tr>
 								<td>${facility.code}</td>
 								<td>${facility.name}</td>
+								<td>${facility.building.name}</td>
 								<td>${facility.type}</td>
 								<td>${facility.description}</td>
 								<td>${facility.maxPeople}</td>
-								<td><a href="facilities/${facility.id}"
+								<td><a href="/admin/facilities/${facility.id}"
 									class="btn btn-primary">Edit</a></td>
 							</tr>
 						</c:forEach>

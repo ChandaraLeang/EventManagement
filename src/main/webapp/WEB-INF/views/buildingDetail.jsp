@@ -1,13 +1,11 @@
+<%@ include file="/resources/common/header.jspf"%>
+<%@ include file="/resources/common/navigation.jspf"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-
 
 <title>Building Detail</title>
 </head>
@@ -25,7 +23,7 @@
 						<h3 class="panel-title">Please Enter Details</h3>
 					</div>
 					<div class="panel-body">
-						<form:form action="../buildings/${building.id}" method="post"
+						<form:form action="/admin/buildings/${building.id}" method="post"
 							modelAttribute="building">
 
 							<div class="form-group">
@@ -53,13 +51,13 @@
 							<c:if test="${building.id==0}">
 								<input type="submit" value="Save" class="btn btn-primary" />
 							</c:if>
-							<a class="btn btn-primary" href="/buildings">Back to List</a>
+							<a class="btn btn-primary" href="../buildings">Back to List</a>
 							<c:if test="${building.id!=0}">
 								<button form="bldDelete" type="submit" class="btn btn-warning">Delete</button>
 							</c:if>
 						</form:form>
 
-						<form:form id="bldDelete" action="/buildings/delete/${building.id}" method="post" modelAttribute="building"></form:form>
+						<form:form id="bldDelete" action="../buildings/delete/${building.id}" method="post" modelAttribute="building"></form:form>
 
 					</div>
 				</div>

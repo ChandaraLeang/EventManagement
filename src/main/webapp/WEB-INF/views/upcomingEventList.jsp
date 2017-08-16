@@ -18,7 +18,12 @@
 <body>
 	<jsp:include page="header.jsp" />
 	<div class="viewport">
-		
+		<div class="container">
+			<h1 style="display: inline;">Search Event</h1>
+				<span class="pull-right"> <a href="/e"
+					class="btn btn-info"> Search Event</a>
+				</span>
+		</div>
 		<h1 class="text-primary">Upcoming Events</h1>
 		
 		<div class="bounds bounds--categories">

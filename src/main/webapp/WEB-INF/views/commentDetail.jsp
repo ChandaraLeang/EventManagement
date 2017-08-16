@@ -25,7 +25,7 @@
 						<h3 class="panel-title">Please Enter Details</h3>
 					</div>
 					<div class="panel-body">
-						<form:form action="/comments/" method="post"
+						<form:form action="/saveEventComment/${event.id}" method="POST"
 							modelAttribute="comment">
 
 							<div class="form-group">
@@ -33,8 +33,13 @@
 										cssClass="form-control" /></label>
 							</div>
 							<div class="form-group">
-								<label><span>Rating:</span> <form:input path="rating"
-										cssClass="form-control" /></label>
+								<label><span>Rating:</span>
+									<span><form:radiobutton path="rating" value="5" label="5" checked="checked" /></span>
+									<span><form:radiobutton path="rating" value="4" label="4" /></span>
+									<span><form:radiobutton path="rating" value="3" label="3" /></span>
+									<span><form:radiobutton path="rating" value="2" label="2" /></span>
+									<span><form:radiobutton path="rating" value="1" label="1" /></span>
+								</label>
 							</div>
 							
 							

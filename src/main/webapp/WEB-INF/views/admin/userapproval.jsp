@@ -24,31 +24,6 @@
 						<a type="button" class="btn btn-primary" href="${userApprove}">Approve</a>
 						<spring:url value="/admin/notapprove?id=${users.id}" var="notApproved" />
 						<a type="button" class="btn btn-large btn-primary btn-warning" href="${notApproved}">Not Approve</a>
-							
-							<%-- <div id="myModal_${users.id}" class="modal fade">
-							    <div class="modal-dialog">
-							        <div class="modal-content">
-							            <div class="modal-header">
-							                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							                <h4 class="modal-title">Confirm</h4>
-							            </div>
-							
-							            <div class="modal-body">
-							                <p>Are you sure you want to approve this Applicant? </p>
-							            </div>
-							            <div class="modal-footer">
-											<spring:url value="/admin/notapprove?id=${users.id}" var="notApproved" />
-							                <button type="button" class="btn btn-primary" data-dismiss="modal">Cane</button>
-							                <a type="button" class="btn btn-warning" href="${notApproved}" title="Delete"><i class="fa fa-trash-o"></i>Not approve</a>
-							            </div>
-							        </div>
-							    </div>
-							</div> 
-							
-							
-						<a href="#myModal_${users.id}" role="button" class="btn btn-large btn-primary btn-warning" data-toggle="modal">Not approve</a>
- --%>
-
 					</td>
 				</tr>
 			</c:forEach>

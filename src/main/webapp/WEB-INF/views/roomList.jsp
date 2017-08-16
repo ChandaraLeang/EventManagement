@@ -1,3 +1,5 @@
+<%@ include file="/resources/common/header.jspf"%>
+<%@ include file="/resources/common/navigation.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -5,16 +7,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet"
-	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-
 <title>Rooms</title>
 </head>
 <body>
 	<div class="jumbotron">
 		<div class="container">
 			<h1 style="display: inline;">Room List</h1>
-			<span class="pull-right"> <a href="addRoom"
+			<span class="pull-right"> <a href="/admin/addRoom"
 				class="btn btn-info"> Add Room</a>
 			</span>
 		</div>
@@ -41,7 +40,7 @@
 								<td>${room.building.name}</td>
 								<td>${room.description}</td>
 								<td>${room.maxNoOfOccupants}</td>
-								<td><a href="rooms/${room.id}" class="btn btn-primary">Edit</a></td>
+								<td><a href="/admin/rooms/${room.id}" class="btn btn-primary">Edit</a></td>
 							</tr>
 						</c:forEach>
 					</table>
