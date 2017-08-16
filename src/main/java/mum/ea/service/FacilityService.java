@@ -20,5 +20,7 @@ public interface FacilityService {
 
 	public boolean existFacilityCode(Facility facility) ;
 	
+	public int existingFacilityCode(Facility facility) ;
+	
 	public List<Facility> findByBuilding(int buildingId);
 }
