@@ -29,6 +29,7 @@ public class MainController {
 	
 	@GetMapping("/")
 	public String index(Model model) {
+		model.addAttribute("event", new Event());
 		model.addAttribute("events", eventRepository.findAllByOrderByIdDesc());
 		return "upcomingEventList";
 	}
