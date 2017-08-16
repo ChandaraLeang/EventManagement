@@ -8,5 +8,5 @@ import mum.ea.domain.Role;
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Integer>{
 	public Role findByRole(String role);
-
+	public Role findById(int id);
 }

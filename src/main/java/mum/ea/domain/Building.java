@@ -1,6 +1,9 @@
 package mum.ea.domain;
 
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -9,11 +12,17 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Building {
+public class Building implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue
 	private int id;
-	@NotNull
+	
+	@NotNull @Column(unique=true)
 	private String code;
 	private String name;
 	private String description;

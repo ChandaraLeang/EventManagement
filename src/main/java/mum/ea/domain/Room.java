@@ -1,5 +1,7 @@
 package mum.ea.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -7,7 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Room {
+public class Room implements Serializable{
 	@Id
 	@GeneratedValue
 	private int id;	

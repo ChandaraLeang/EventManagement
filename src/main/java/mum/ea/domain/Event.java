@@ -1,5 +1,6 @@
 package mum.ea.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,8 +18,10 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class Event {
-	
+public class Event implements Serializable{
+
+	private static final long serialVersionUID = 1L;
+
 	@Id @GeneratedValue
 	private int id;
 	

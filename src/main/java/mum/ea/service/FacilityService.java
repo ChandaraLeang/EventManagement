@@ -1,51 +1,24 @@
 package mum.ea.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import mum.ea.domain.Facility;
-import mum.ea.repository.FacilityRepository;
 
-@Service
-@Transactional
-public class FacilityService {
+public interface FacilityService {
 
-	@PersistenceContext
-	private EntityManager entityManager;
+	public List<Facility> getAllFacilities();
 
-	@Autowired
-	private FacilityRepository facilityRepository;
+	public Facility getFacility(int facilityId) ;
 
-	public List<Facility> getAllFacilities() {
-		List<Facility> facilities = new ArrayList<>();
-		facilityRepository.findAll().forEach(facilities::add);
-		return facilities;
-	}
+	public void addFacility(Facility facility) ;
 
-	public Facility getFacility(int facilityId) {
-		return facilityRepository.findOne(facilityId);
-	}
+	public void updateFacility(Facility facility) ;
 
-	public void addFacility(Facility facility) {
-		facilityRepository.save(facility);
-	}
+	public void deleteFacility(Facility facility) ;
 
-	public void updateFacility(Facility facility) {
-		facilityRepository.save(facility);
-	}
+	public void deleteFacility(int facilityId) ;
 
-	public void deleteFacility(Facility facility) {
-		facilityRepository.delete(facility);
-	}
+	public boolean existFacilityCode(Facility facility) ;
 	
-	public void deleteFacility(int facilityId) {
-		facilityRepository.delete(facilityId);
-	}
+	public List<Facility> findByBuilding(int buildingId);
 }

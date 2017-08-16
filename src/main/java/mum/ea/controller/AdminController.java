@@ -11,8 +11,10 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,6 +46,12 @@ public class AdminController {
 	
 	private List<UserType> userType = new ArrayList<UserType>(Arrays.asList(UserType.values()));
 	
+	@GetMapping("/error")
+	public String getBuildings(Model m) {
+		m.addAttribute("fullPageMessage", "Greetings from Spring Boot!");
+		return "fullPageMessage";
+	}
+	
 	@RequestMapping(value="/registration", method = RequestMethod.GET)
 	public ModelAndView registration(){
 		ModelAndView modelAndView = new ModelAndView();
@@ -59,8 +67,8 @@ public class AdminController {
 	public ModelAndView saveUserRegistration(@Valid User user, BindingResult bindingResult,
 			@RequestParam(value="verifypassword", required=false) String verifypassword) {
 		ModelAndView modelAndView = new ModelAndView();
-		if(user.getStatus() != 3)
-			user.setStatus(2);
+/*		if(user.getStatus() != 3)
+			user.setStatus(2);*/
 		
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
@@ -83,14 +91,16 @@ public class AdminController {
 			
 			Set<Role> roles = new HashSet();
 			Set<EventGroup> groups = new HashSet();
-			Role role = new Role();
+			
+			Role role = roleService.findById(user.getStatus());
+			
+			System.out.println(role);
+			
 			EventGroup group = new EventGroup();
-			role = roleService.findByRole("ADMIN");
 			int indx = 1;
-			group = eventGroupService.getGroup(indx);
-			roles.add(role);
+			group = eventGroupService.getGroup(indx);    //eventGroupService.getGroup(indx);
 			groups.add(group);
-			user.setRoles(roles);
+			user.setRole(role);
 			user.setGroups(groups);
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
@@ -116,10 +126,22 @@ public class AdminController {
 		return model;
 	}
 	
+	@RequestMapping(value="/admin/userapprove", method = RequestMethod.GET)
+	public String userApproved(ModelMap model, @RequestParam int id) {
+		User user = userService.findUserById(id);
+		user.setStatus(2);
+		userService.enableUser(user);
+		
+		List<User> userList = userService.findAll();
+		model.addAttribute("userList",userList);
+		
+		return "admin/userapproval";
+	}
+	
 	@RequestMapping(value="/admin/notapprove", method=RequestMethod.GET)
 	public String delete(ModelMap model, @RequestParam int id) {
 		
-		userService.deleteUser((long)id);
+		userService.deleteUser(id);
 		List<User> userList = userService.findAll();
 		model.addAttribute("userList",userList);
 		

@@ -19,16 +19,16 @@ import mum.ea.service.FacilityService;
 
 @Controller
 public class EventController {
-	
+
 	@Autowired
 	private EventService eventService;
-	
+
 	@Autowired
 	private CategoryService categoryService;
-	
+
 	@Autowired
 	private FacilityService facilityService;
-	
+
 	@GetMapping("/events")
 	public String getEvents(Model m) {
 		m.addAttribute("events", eventService.getAllEvents());
@@ -42,46 +42,46 @@ public class EventController {
 		m.addAttribute("event", eventService.getEvent(id));
 		return "eventDetail";
 	}
-	
+
 	@GetMapping("/addEvent")
 	public String addEventView(Model m) {
 		m.addAttribute("categories", categoryService.getAllCategories());
 		m.addAttribute("facilities", facilityService.getAllFacilities());
-		m.addAttribute("event" , new Event());
+		m.addAttribute("event", new Event());
 		return "eventDetail";
 	}
 
 	@PostMapping("/events")
 	public String addEvent(@Valid Event e, BindingResult result) {
 		if (result.hasErrors()) {
-            return "addEvent";
-        } else {
-		eventService.addEvent(e);
-		return "redirect:/events";
-        }
+			return "addEvent";
+		} else {
+			eventService.addEvent(e);
+			return "redirect:/events";
+		}
 	}
 
 	@PostMapping("/events/{id}")
 	public String updateEvent(@Valid Event e, BindingResult result) {
 		if (result.hasErrors()) {
-            return "eventDetail";
-        } else {
-		eventService.updateEvent(e);
-		return "redirect:/events";
-        }
+			return "eventDetail";
+		} else {
+			eventService.updateEvent(e);
+			return "redirect:/events";
+		}
 	}
-	
+
 	@PostMapping("/events/delete/{id}")
 	public String deleteEvent(Event e) {
 		eventService.deleteEvent(e.getId());
 		return "redirect:/events";
 	}
-	
+
 	@ExceptionHandler(value = NoSuchResourceException.class)
-    public ModelAndView handle(Exception e) {
-        ModelAndView mv = new ModelAndView();
-        mv.getModel().put("e", e);
-        mv.setViewName("fullPageMessage");
-        return mv;
-    }
+	public ModelAndView handle(Exception e) {
+		ModelAndView mv = new ModelAndView();
+		mv.getModel().put("e", e);
+		mv.setViewName("fullPageMessage");
+		return mv;
+	}
 }
