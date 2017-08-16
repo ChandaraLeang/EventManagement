@@ -15,6 +15,7 @@ public interface FacilityRepository extends CrudRepository<Facility, Integer> {
 	//List<Facility> findByIdNotEqualsAndCode(int id, String code);
 	List<Facility> findByCode(String code);
 	public List<Facility> findByBuilding(Building building);
+	public List<Facility> findAllByOrderByCode();
 
 
 }
