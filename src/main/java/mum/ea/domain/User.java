@@ -23,6 +23,10 @@ import org.springframework.data.annotation.Transient;
 @Table(name = "user")
 public class User implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "user_id")

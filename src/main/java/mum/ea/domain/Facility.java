@@ -1,6 +1,7 @@
 package mum.ea.domain;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -45,6 +48,19 @@ public class Facility implements Serializable{
 	private String description;
 
 	private boolean isAvailable;
+	
+	private Date created;
+	private Date updated;
+
+	@PrePersist
+	protected void onCreate() {
+		setCreated(new Date());
+	}
+
+	@PreUpdate
+	protected void onUpdate() {
+		setUpdated(new Date());
+	}
 
 	public Facility() {
 	}
@@ -121,6 +137,22 @@ public class Facility implements Serializable{
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	public Date getUpdated() {
+		return updated;
+	}
+
+	public void setUpdated(Date updated) {
+		this.updated = updated;
 	}
 
 }
