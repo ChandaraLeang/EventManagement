@@ -10,15 +10,14 @@
 
 </head>
 <body>
-	<div class="header"></div>
-	<div>
+	<div class="header">
 		<security:authorize access="isAuthenticated()">
 
 			<div class="userInfo">
-				<h1>
+				<h2>
 					Welcome
 					<security:authentication property="principal.username" />
-				</h1>
+				</h2>
 
 			</div>
 			<a id="lnkLogout" href="logout" class="actionButton">Logout</a>

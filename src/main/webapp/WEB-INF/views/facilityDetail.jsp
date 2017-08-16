@@ -23,8 +23,14 @@
 						<h3 class="panel-title">Please Enter Details</h3>
 					</div>
 					<div class="panel-body">
+
 						<form:form action="/admin/facilities/${facility.id}" method="post"
 							modelAttribute="facility">
+							<c:if test="${not empty errorMsg}">
+								<div class="error alert-${css} alert-dismissible" role="alert">
+									<strong>${errorMsg}</strong>
+								</div>
+							</c:if>
 
 							<div class="form-group">
 								<label><span>Code:</span> <form:input path="code"
@@ -36,10 +42,11 @@
 										cssClass="form-control" /></label>
 							</div>
 							<div class="form-group">
-								<label><span>Building:</span> <form:select path="building"
-										cssClass="form-control">
+								<label><span>Building:</span> <form:select
+										path="building" cssClass="form-control">
 										<form:option value=""></form:option>
-												<form:options items="${buildings}" itemLabel="name" itemValue="id"  />
+										<form:options items="${buildings}" itemLabel="name"
+											itemValue="id" />
 									</form:select> </label>
 							</div>
 							<div class="form-group">

@@ -1,11 +1,11 @@
+<%@ include file="/resources/common/header.jspf"%>
+<%@ include file="/resources/common/navigation.jspf"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
 <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 <link href="resources/bootstrap/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
@@ -22,7 +22,7 @@
 <body>
 	<div class="jumbotron">
 		<div class="container">
-			<h1>Event Detail</h1>
+			<h1><a href="/">Event Detail</a></h1>
 		</div>
 	</div>
 	<div class="container">
