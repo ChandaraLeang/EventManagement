@@ -31,7 +31,7 @@ public class FacilityServiceImpl implements FacilityService {
 
 	public List<Facility> getAllFacilities() {
 		List<Facility> facilities = new ArrayList<>();
-		facilityRepository.findAll().forEach(facilities::add);
+		facilityRepository.findAllByOrderByCode().forEach(facilities::add);
 		return facilities;
 	}
 
@@ -60,6 +60,14 @@ public class FacilityServiceImpl implements FacilityService {
 			return false;
 		else
 			return true;
+	}
+	
+	public int existingFacilityCode(Facility facility) {
+		List<Facility> lst =facilityRepository.findByCode(facility.getCode());
+		if (lst.size() < 1)
+			return 0;
+		else
+			return lst.get(0).getId();
 	}
 	
 	public List<Facility> findByBuilding(int buildingId) {
